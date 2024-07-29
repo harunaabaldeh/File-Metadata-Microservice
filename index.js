@@ -30,7 +30,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Create the uploads directory if it doesn't exist
-const fs = require("fs");
 const uploadsDir = "uploads";
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
@@ -39,11 +38,11 @@ if (!fs.existsSync(uploadsDir)) {
 // Serve the form for file upload
 app.get("/", (req, res) => {
   res.send(`
-      <form action="/api/upload" method="POST" enctype="multipart/form-data">
-        <input type="file" name="upfile" />
-        <button type="submit">Upload</button>
-      </form>
-    `);
+    <form action="/api/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="upfile" />
+      <button type="submit">Upload</button>
+    </form>
+  `);
 });
 
 // Handle file upload
